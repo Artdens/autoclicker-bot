@@ -1,0 +1,14 @@
+workflows:
+  android-kotlin:
+    name: Android AutoClicker
+    max_build_duration: 10
+    environment:
+      android_signing:
+        keystore: encoded_keystore
+        keystore_password: $KEYSTORE_PASSWORD
+        key_alias: $KEY_ALIAS
+        key_password: $KEY_PASSWORD
+    scripts:
+      - ./gradlew assembleRelease
+    artifacts:
+      - app/build/outputs/**/*.apk
